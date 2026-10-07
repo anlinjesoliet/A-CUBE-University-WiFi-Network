@@ -153,9 +153,9 @@ The access layer consists of:
                          │ DHCP Relay      │
                          └────────┬────────┘
                                   │
-                         G0/0 ↔ Fa0/1
-                         Copper Straight-
-                         Through Trunk
+                            G0/0 ↔ Fa0/1
+                            Copper Straight
+                            Through Trunk
                                   │
                          ┌────────▼────────┐
                          │   Main Switch   │
