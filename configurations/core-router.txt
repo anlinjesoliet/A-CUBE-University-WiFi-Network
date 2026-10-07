@@ -3,33 +3,61 @@ configure terminal
 
 hostname CORE-R2
 
-! Enable physical interface
+! =========================================================
+! PHYSICAL INTERFACE
+! Connection to Main Switch Fa0/1
+! =========================================================
+
 interface gigabitEthernet 0/0
  no shutdown
  exit
 
-! VLAN 10 - Students
+
+! =========================================================
+! VLAN 10 - STUDENTS
+! Network: 192.168.10.0/24
+! Gateway: 192.168.10.1
+! =========================================================
+
 interface gigabitEthernet 0/0.10
  encapsulation dot1Q 10
  ip address 192.168.10.1 255.255.255.0
  ip helper-address 192.168.50.30
  exit
 
-! VLAN 20 - Faculty
+
+! =========================================================
+! VLAN 20 - FACULTY
+! Network: 192.168.20.0/24
+! Gateway: 192.168.20.1
+! =========================================================
+
 interface gigabitEthernet 0/0.20
  encapsulation dot1Q 20
  ip address 192.168.20.1 255.255.255.0
  ip helper-address 192.168.50.30
  exit
 
-! VLAN 30 - Administration
+
+! =========================================================
+! VLAN 30 - ADMINISTRATION
+! Network: 192.168.30.0/24
+! Gateway: 192.168.30.1
+! =========================================================
+
 interface gigabitEthernet 0/0.30
  encapsulation dot1Q 30
  ip address 192.168.30.1 255.255.255.0
  ip helper-address 192.168.50.30
  exit
 
-! VLAN 40 - Guests
+
+! =========================================================
+! VLAN 40 - GUESTS
+! Network: 192.168.40.0/24
+! Gateway: 192.168.40.1
+! =========================================================
+
 interface gigabitEthernet 0/0.40
  encapsulation dot1Q 40
  ip address 192.168.40.1 255.255.255.0
@@ -37,23 +65,47 @@ interface gigabitEthernet 0/0.40
  ip access-group 100 in
  exit
 
-! VLAN 50 - Servers
+
+! =========================================================
+! VLAN 50 - SERVERS
+! Network: 192.168.50.0/24
+! Gateway: 192.168.50.1
+! =========================================================
+
 interface gigabitEthernet 0/0.50
  encapsulation dot1Q 50
  ip address 192.168.50.1 255.255.255.0
  exit
 
-! VLAN 99 - Management
+
+! =========================================================
+! VLAN 99 - MANAGEMENT
+! Network: 192.168.99.0/24
+! Gateway: 192.168.99.1
+! =========================================================
+
 interface gigabitEthernet 0/0.99
  encapsulation dot1Q 99
  ip address 192.168.99.1 255.255.255.0
  exit
 
-! ACL - Block Guests from Server VLAN
+
+! =========================================================
+! ACCESS CONTROL LIST
+! =========================================================
+!
+! Block Guest VLAN from accessing Server VLAN
+!
+
 access-list 100 deny ip 192.168.40.0 0.0.0.255 192.168.50.0 0.0.0.255
 
-! Allow all other traffic
+! Allow all other IP traffic
 access-list 100 permit ip any any
+
+
+! =========================================================
+! SAVE CONFIGURATION
+! =========================================================
 
 end
 
