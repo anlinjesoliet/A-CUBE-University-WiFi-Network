@@ -1,0 +1,75 @@
+# Project Overview
+
+## 1. Project Title
+
+# University Wi-Fi Network
+
+## 2. Introduction
+
+The **University Wi-Fi Network** is a Cisco Packet Tracer-based networking project designed to provide secure and organized wireless connectivity within a university environment.
+
+The network separates different categories of users into individual VLANs:
+
+- Students
+- Faculty
+- Administration
+- Guests
+- Servers
+- Network Management
+
+This separation improves network organization, security, and traffic management.
+
+---
+
+## 3. Problem Statement
+
+In a university environment, different users require different levels of network access.
+
+Students, faculty, administration staff, and guests should not be placed on the same network because they may have different access requirements.
+
+For example:
+
+- Students may require access to academic resources.
+- Faculty may require access to academic and administrative resources.
+- Administration users may require access to internal services.
+- Guests should have limited network access.
+- Internal servers should be protected from unauthorized users.
+
+A properly segmented network is therefore required to improve security and manageability.
+
+---
+
+## 4. Proposed Solution
+
+The proposed solution uses **VLAN-based network segmentation**.
+
+Separate VLANs are created for each major user group. Each VLAN has its own IP subnet and default gateway.
+
+The main technologies used are:
+
+- VLAN
+- Trunking
+- Router-on-a-Stick
+- Inter-VLAN Routing
+- DHCP
+- DHCP Relay
+- Access Control Lists
+- Wireless LAN
+- WPA2-PSK
+- AAA/RADIUS concepts
+
+An ACL is used to prevent Guest users from accessing the internal Server VLAN.
+
+---
+
+## 5. User Groups
+
+### Students
+
+Students are connected to:
+
+```text
+SSID: UNIVERSITY-STUDENT
+VLAN: 10
+Network: 192.168.10.0/24
+Gateway: 192.168.10.1
