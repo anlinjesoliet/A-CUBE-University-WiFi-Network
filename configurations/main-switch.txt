@@ -1,0 +1,83 @@
+enable
+configure terminal
+
+hostname MAIN-SWITCH
+
+! Create VLANs
+vlan 10
+ name Students
+ exit
+
+vlan 20
+ name Faculty
+ exit
+
+vlan 30
+ name Administration
+ exit
+
+vlan 40
+ name Guests
+ exit
+
+vlan 50
+ name Servers
+ exit
+
+vlan 99
+ name Management
+ exit
+
+! Trunk connection to CORE-R2
+interface fastEthernet 0/1
+ switchport mode trunk
+ exit
+
+! Student Access Point
+interface fastEthernet 0/2
+ switchport mode access
+ switchport access vlan 10
+ exit
+
+! Faculty Access Point
+interface fastEthernet 0/3
+ switchport mode access
+ switchport access vlan 20
+ exit
+
+! Administration Access Point
+interface fastEthernet 0/4
+ switchport mode access
+ switchport access vlan 30
+ exit
+
+! Guest Access Point
+interface fastEthernet 0/5
+ switchport mode access
+ switchport access vlan 40
+ exit
+
+! DHCP Server
+interface fastEthernet 0/6
+ switchport mode access
+ switchport access vlan 50
+ exit
+
+! AUTH-SERVER
+interface fastEthernet 0/7
+ switchport mode access
+ switchport access vlan 50
+ exit
+
+! Management interface
+interface vlan 99
+ ip address 192.168.99.2 255.255.255.0
+ no shutdown
+ exit
+
+! Default gateway for switch management
+ip default-gateway 192.168.99.1
+
+end
+
+copy running-config startup-config
