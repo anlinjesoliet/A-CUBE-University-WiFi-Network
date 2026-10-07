@@ -84,7 +84,6 @@ The main objectives of this project are:
 ## 5. Technologies Used
 
 - Cisco Packet Tracer
-- Cisco IOS
 - IPv4
 - VLAN
 - IEEE 802.1Q
@@ -95,7 +94,6 @@ The main objectives of this project are:
 - Access Control List (ACL)
 - Wireless LAN
 - WPA2-PSK
-- AES-CCMP
 - AAA
 - RADIUS concept
 - ISP/Internet connectivity
